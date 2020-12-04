@@ -1,7 +1,8 @@
 # Advent of Code 2020
 
-Solutions written in whatever I felt like that day
+Solutions written in whatever I felt like that day (probably MATLAB)
 
 - Day 1: MATLAB
 - Day 2: MATLAB (the input has a slight modification, where there is a header row, see in day2 folder for example)
 - Day 3: Still MATLAB
+- Day 4: Looks like its gonna be MATLAB (the regex %s/\n/ /g was applied to the input before feeding in)
