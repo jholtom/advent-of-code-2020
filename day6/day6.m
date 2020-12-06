@@ -14,19 +14,11 @@ for i = 1:numel(C)
 end
 
 % Part 1
-unique_rows = cellfun(@deep_unique,D,'UniformOutput',false);
+unique_rows = cellfun(@(u) unique(strcat(u{:})),D,'UniformOutput',false);
 sum_rows = cellfun(@numel,unique_rows);
 sum(sum_rows,'all')
 
 % Part 2
-all_rows = cellfun(@deep_answer,D,'UniformOutput',false);
+all_rows = cellfun(@(r) mintersect(r{:}),D,'UniformOutput',false);
 sum_rows = cellfun(@numel,all_rows);
 sum(sum_rows,'all')
-
-function u = deep_unique(r)
-    u = unique(strcat(r{:}));
-end
-
-function a = deep_answer(r)
-    a = mintersect(r{:});
-end
