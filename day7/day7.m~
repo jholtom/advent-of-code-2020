@@ -1,0 +1,51 @@
+A = importdata('day7_test_input.txt');
+
+rules = struct;
+
+for i = 1:numel(A)
+    r = strsplit(A{i},' ');
+    bag_name = strcat(r{1},r{2});
+    if mod(numel(r),4) ~= 0
+        rules.(bag_name) = 0;
+    else
+        s = struct;
+        re = (numel(r)-4)/4;
+        for k = 1:re
+            ind = k*4+1;
+            num_in = str2double(r{ind});
+            bg_in = strcat(r{ind+1},r{ind+2});
+            s.(bg_in) = num_in;
+        end
+        rules.(bag_name) = s;
+    end
+end
+
+search = 'shinygold';
+req_depth = 1;
+
+count = 0;
+
+f = fieldnames(rules);
+% for i = 1:numel(f)
+%     fprintf('Searching down %s\n',f{i});
+%     find_container(rules,f{i},search);
+% end
+z = find_container(rules,f{1},search);
+
+function m = find_container(ruleset,field,search_str)
+    k = ruleset.(field);
+    if class(k) ~= 'struct'
+        m = 0;
+    else
+        c = fieldnames(k);
+        for i = numel(c)
+            c
+            if strcmp(c{i},search_str)
+                m = 1;
+                return
+            else
+                m = find_container(ruleset,c{i},search_str);
+            end
+        end
+    end
+end
