@@ -1,10 +1,5 @@
-A = importdata('day8_test_input.txt');
+A = importdata('day8_input.txt');
 B = {A.textdata,A.data};
-
-ptr = 1;
-halt = 0;
-
-seen = zeros(size(A.textdata));
 
 [accumulator,~] = run_case(B);
 
@@ -12,10 +7,26 @@ seen = zeros(size(A.textdata));
 fprintf("Accumulator value is: %d\n",accumulator);
 
 % Part 2
-
-% [k,halt] = run_case(B)
-
-
+permutations = {};
+% Generate Permutations
+for i = 1:numel(A.textdata)
+    k = B;
+    instruction = B{1}{i};
+    switch instruction
+        case 'nop'
+            k{1}{i} = 'jmp';
+        case 'jmp'
+            k{1}{i} = 'nop';
+    end
+    permutations{i} = k;
+end
+for i = 1:numel(permutations)
+    [k,halt] = run_case(permutations{i});
+    if halt == 2
+        fprintf("Accumulator value for normal halt: %d\n",k);
+        break;
+    end
+end
 
 function [a,halt] = run_case(in)
 halt = 0;
