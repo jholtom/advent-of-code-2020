@@ -8,3 +8,5 @@ Solutions written in whatever I felt like that day (probably MATLAB)
 - Day 4: Looks like its gonna be MATLAB (the regex %s/\n/ /g was applied to the input before feeding in)
 - Day 5: MATLAB!
 - Day 6: MATLAB (mintersect.m borrowed from https://www.mathworks.com/matlabcentral/fileexchange/6144-mintersect-multiple-set-intersection)
+- Day 7: MATLAB
+- Day 8: You bet its gonna be MATLAB
