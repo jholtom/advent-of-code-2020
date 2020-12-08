@@ -35,7 +35,7 @@ count
 
 % Part 2
 % How many bags are required inside a single shiny gold bag?
-
+count2 = find_numbags(rules,search,0)
 
 function m = find_container(ruleset,field,search_str,m)
 k = ruleset.(field);
@@ -50,6 +50,19 @@ else
         for i = 1:numel(c)
             m = find_container(ruleset,c{i},search_str,m);
         end
+    end
+end
+end
+
+function m = find_numbags(ruleset,field,m)
+k = ruleset.(field);
+if class(k) ~= 'struct'
+    m = 0;
+else
+    c = fieldnames(k);   
+    for i = 1:numel(c)
+        sub_bags = find_numbags(ruleset,c{i},0);
+        m = m + k.(c{i}) + k.(c{i})*sub_bags;
     end
 end
 end
