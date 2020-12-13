@@ -1,4 +1,4 @@
-A = importdata('day11_input.txt');
+A = importdata('day11_test_input.txt');
 B = cell(10); % Day input is 98
 for i = 1:numel(A)
     k = split(A{i},'');
@@ -18,7 +18,7 @@ for i = 1:size(B,1)
         % If empty, and no occupied next to it, seat becomes occupied
         if seat_occupied == 0 && (adj_occupied == 0)
             C{i,j} = '#';
-        elseif seat_occupied == 1 && (adj_occupied >= 4)
+        elseif seat_occupied == 1 && (adj_occupied >= 5)
             % If seat occupied and >=4 seats adjacent occupied, seat becomes empty
             C{i,j} = 'L';
         else
