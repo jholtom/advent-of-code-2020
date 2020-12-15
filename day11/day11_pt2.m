@@ -54,7 +54,9 @@ end
 if ad > size(mat,2)
     ad = size(mat,2);
 end
-z = mat(al:ar,au:ad);
+%z = mat(al:ar,au:ad);
+% Instead of just the adjacent squares, it needs to become the first
+% seat in each direction
 k = mat{i,j};
 if k == '.'
     c = -1;

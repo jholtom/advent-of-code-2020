@@ -1,0 +1,1 @@
+A = importdata('day14_test_input.txt');
